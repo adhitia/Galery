@@ -1,0 +1,43 @@
+
+
+	<div id="main_wrapper">
+    
+    	<div id="header" class="centered">
+        	
+            <div id="logo">
+            	<img src="images/logo.jpg" />
+            </div><!--- #header #logo --->
+            
+            <div id="main_menu">
+            	<%= link_to "Galery", galeries_path%>|
+
+          <% unless logged_in? %>
+            <%= link_to "Login", login_path%>
+          <% else %>
+           <%= link_to "Logout", logout_path%>
+            <% if current_user.status %>
+             |<%= link_to "invite person", new_user_path%>
+            <% end %>
+          <% end%>
+            </div><!--- #main_menu --->
+            
+        </div><!--- #header --->
+        <br />
+        <div id="slider" class="centered">
+        	<img src="images/slider.jpg" />
+        </div><!--- #slider --->
+    
+        <div id="content">
+        	<div class="centered">	
+            	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent adipiscing, mi commodo venenatis commodo, eros mauris facilisis libero, ac aliquam massa elit vel tortor. Vestibulum lacinia aliquam venenatis. Mauris non mi id odio fringilla tempor. Cras viverra rutrum orci, eu luctus nulla tincidunt non. Curabitur tempus neque quis odio sagittis nec bibendum risus sodales. Nam iaculis dui at justo scelerisque elementum. Cras vitae sem a eros pellentesque suscipit. Phasellus elementum ornare iaculis. Duis vehicula venenatis volutpat. Proin molestie, diam eu suscipit fringilla, elit tellus pharetra diam, eget porta lectus nisi sed neque. Duis gravida rhoncus libero, et feugiat dui consectetur in.
+            </div>
+        </div><!--- #content --->
+    
+        <div id="footer">
+        	<div class="centered">
+        		&copy; 2011 - Lorem ipsum dolor sit amet.
+        	</div>
+        </div><!--- #footer --->
+    
+    </div><!--- #main_wrapper --->
+

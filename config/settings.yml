@@ -1,0 +1,19 @@
+production:
+  email:
+    address: 'smtp.gmail.com'
+    port: 587
+    domain: 'gmail.com'
+    authentication: 'plain'
+    user_name: 'adhitia.hidayat@gmail.com'
+    password: 'l3g3ndary'
+    auto_tls: true
+
+development:
+  email:
+    address: 'smtp.gmail.com'
+    port: 587
+    domain: 'gmail.com'
+    authentication: 'plain'
+    user_name: 'adhitia.hidayat@gmail.com'
+    password: 'l3g3ndary'
+    auto_tls: true

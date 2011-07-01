@@ -1,0 +1,43 @@
+
+body {
+	margin:0px;
+	border:0px;
+	padding:0px;
+}
+
+.centered {
+	width:825px;
+	left:50%;
+	margin-left:-412px;
+	position:relative;	
+}
+
+#main_wrapper {
+	margin-top:50px;
+}
+
+	#main_wrapper #header {
+	}
+
+
+		#main_wrapper #header #main_menu {
+			float:right;
+		}
+
+	#main_wrapper #slider {
+		padding:25px 0px;
+	}
+
+	#main_wrapper #content {
+		background:#2f2f31;
+		color:#fff;
+		padding:25px;
+	}
+	
+	#main_wrapper #footer {
+		background:#2f2f31;
+		color:#fff;
+		padding:25px;
+		text-align:center;
+	}
+
