@@ -18,9 +18,9 @@ task :after_update_code do
     run "cp #{shared_path}/config/#{config} #{release_path}/config/#{config}"
   end
   
-  #run "ln -s #{shared_path}/system/uploads #{release_path}/public/uploads"
+  run "ln -s #{shared_path}/system/uploads #{release_path}/public/uploads"
 
-  #run "chmod 777 #{current_path}/tmp -R"
+  run "chmod 777 #{current_path}/tmp -R"
 end
 
 
