@@ -1,0 +1,12 @@
+---
+admin:
+  login:                     admin
+  email:                     admin@gelery-private.coma
+  password:                  admin
+  password_confirmation:     admin
+  status:                    1
+
+
+
+  
+ 
