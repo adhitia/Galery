@@ -1,0 +1,62 @@
+<%=  javascript_include_tag "swfobject", "jquery.uploadify.v2.1.4" %>
+<%= stylesheet_link_tag 'uploadify' %>
+
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function() {
+    $('#upload_picture').uploadify({
+      'uploader'  : '/swf/uploadify.swf',
+      'script'    : '<%= upload_path %>',
+      'cancelImg' : '/images/cancel.png',
+      'auto'      : true,
+      'fileDataName'    : 'uploaded_data',
+      'multi'     : false,
+      'removeCompleted': false,
+      'scriptData' : {
+        'type': 'picture',
+        'format': 'json'
+      },
+      'onComplete': function(event, queueID, fileObj, response, data) {
+        resp = eval('('+response+')');
+        if (resp.result=='success'){
+          $('#picture_file_id').val(resp.id);
+          url_pre = '<img src="'+resp.url_preview+'"></img>';
+          $('#cover_preview').html(url_pre);
+          document.getElementById('upload_picture_error').innerHTML = ""
+        }else{
+          document.getElementById('upload_photoQueue').innerHTML = "<p id=\"upload_picture_error\" style=\"font-family: arial; color: red; font-size: 12px;\"><b>Upload failed !</b></p>";
+        }
+      }
+    });
+  });
+
+</script>
+
+<div class="form">
+  <div class="floatleft label"><%= f.label :picture_title, 'picture title' %></div>
+  <div class="floatleft input"><%= f.text_field :picture_title %></div>
+</div>
+<div class="form">
+  <div class="floatleft label"><%= f.label :description, 'picture description' %></div>
+  <div class="floatleft input">
+    <%= f.text_area :description, :rows => 4 %>
+    <em>Describe your picture</em>
+  </div>
+  <div class="clear">&nbsp;</div>
+</div>
+
+<div class="form" style="width: 980px;">
+  <% f.fields_for :galery_file do |f_galery| %>
+    <div class="floatleft label"><%= f_galery.label :uploaded_data, 'picture file' %></div>
+    <div class="floatleft input input_size">
+      <div class="upload_row">
+        <%= file_field_tag :upload_picture%><br/>Upload your picture<%= hidden_field_tag :picture_file_id, @galery.galery_file.id %>
+      </div>
+    </div>
+    <div class="clear"></div>
+  <% end %>
+</div>
+<div id="cover_preview"></div>
+<div class="form" style="margin-bottom: 25px;margin-right:125px;">
+  <div class="floatleft" style="margin-left: 10px"><%= f.submit 'Submit'%></div>
+  <div class="clear">&nbsp;</div>
+</div>
