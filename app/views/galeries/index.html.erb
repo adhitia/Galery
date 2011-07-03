@@ -1,5 +1,8 @@
 <h1>Caritana Galeries, nke mah aya gagambaran</h1>
 
+<% @galeries.each do |pic| %>
+<%= show_image_tag pic.galery_file %> <br />
+<% end %>
 
 <%=  link_to "LogOut", logout_path%>
 <%=  link_to  "Home", root_path%>

@@ -28,7 +28,7 @@ class GaleriesController < ApplicationController
   # GET /galeries/new.xml
   def new
     @galery = Galery.new
-
+    @galery.build_galery_file
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @galery }
@@ -43,10 +43,13 @@ class GaleriesController < ApplicationController
   # POST /galeries
   # POST /galeries.xml
   def create
-    @galery = Galery.new(params[:galery])
-
+    @galery = current_user.galeries.new(params[:galery])
+    galery_file = GaleryFile.find_by_id(params[:picture_file_id])
+    raise "picture is empty" unless galery_file
+    @galery.galery_file = galery_file
     respond_to do |format|
       if @galery.save
+        @galery.galery_file.watermark_image
         format.html { redirect_to(@galery, :notice => 'Galery was successfully created.') }
         format.xml  { render :xml => @galery, :status => :created, :location => @galery }
       else
